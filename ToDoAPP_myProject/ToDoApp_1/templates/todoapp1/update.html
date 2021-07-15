@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Tasks</title>
+    <style>
+        .center-column{
+            width:600px;
+            margin: 20px auto;
+            padding:20px;
+            background-color:#cc99ff;
+            border-radius: 3px;
+
+        }
+        .titlestyle{
+            font-family: "Times New Roman";
+            font-weight:bold;
+        }
+        .item-row{
+            background-color:#ccff33;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 3px;
+            border-style: solid;
+            border-width: 2px;
+            border-color:#800040;
+            font-size: 16px;
+            box-shadow: 0px -1px 10px -10px rgba(0,0,0,0.85);
+	    }
+	    .buttonHolder{
+            text-align: center;
+        }
+
+        .cutton{
+            background-color:#ffff66;
+            border-style: solid;
+            order-width: 2px;
+            border-color:#e60073;
+            height:30px;
+            width:150px;
+            margin:4px;
+            padding:6px;
+            left-margin:auto;
+            right-margin:auto;
+
+        }
+
+
+
+
+    </style>
+</head>
+<body bgcolor="#ffe680">
+
+<div class="center-column" >
+        <h3>Update Task</h3>
+        <form method="POST" action="">
+
+                <div class="item-row">
+                    {% csrf_token %}
+                    <div class="titlestyle" > {{form}}</div>
+                </div>
+                <div class="buttonHolder">
+                    <input type="submit" name="update_task" class="cutton">
+                </div>
+        </form>
+
+</div>
+</body>
+</html>

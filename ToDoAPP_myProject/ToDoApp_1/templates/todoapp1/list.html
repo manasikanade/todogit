@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do App</title>
+    <style>
+
+	body{
+		background-color:#ff80b3;
+	}
+
+	input{
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		box-sizing: border-box;
+	}
+
+	input::placeholder {
+	  color: #ff531a;
+
+	}
+
+	.submit{
+		background-color: #ff4da6;
+
+		font-weight:bold
+	}
+	.dubmit{
+	    background-color: #ffff33;
+
+	    height:30px;
+	    width:75px
+	}
+	.gumit{
+	    background-color: #ff6600;
+        height:30px;
+	    width:75px
+	}
+
+	.center-column{
+		width:600px;
+		margin: 20px auto;
+		padding:20px;
+		background-color: #ccff66;
+		border-radius: 3px;
+		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+	}
+
+	.item-row{
+		background-color: #aa80ff;
+		margin: 10px;
+		padding: 20px;
+		border-radius: 3px;
+		border-style: solid;
+        border-width: 2px;
+		border-color:#800040;
+		font-size: 16px;
+		box-shadow: 0px -1px 10px -10px rgba(0,0,0,0.85);
+	}
+
+	.btn-danger{
+		background-color: #ff6333;
+		border-color: #cc0066;
+
+	.button-up{
+	    background-color:#ff531a
+	    border-color:#4d1200
+	}
+	</style>
+</head>
+<body background="beautiful-evening-landscape.jpg">
+
+<div class="center-column">
+     <h1>To Do List</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{form.title}} <!-- this will create input bar text bar-->
+    <input class="submit" type="submit" name="Create_Task"> <!--this will create submit button-->
+</form>
+
+<div class="todo-list">
+{% for task in tasks %}
+    <div class="item-row">
+        <button type="button" class="gumit">
+            <a class="gumit" href="{% url 'update_task' task.id %}">Update</a></button>
+        <!--update_task is name we have made in urls of app-->
+        <button type="button" class="dubmit">
+        <a class="dubmit" href="{% url 'delete_task' task.id %}">Delete</a></button>
+        {% if task.complete == True %}
+        <strike>{{task}}</strike>
+        {% else %}
+        <span>{{task}}</span>
+        {% endif %}
+
+    </div>
+
+{% endfor %}
+</div>
+</div>
+</body>
+</html>
